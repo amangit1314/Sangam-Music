@@ -10,7 +10,7 @@ class SangamApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.cyan),
+      theme: ThemeData(primarySwatch: Colors.cyan, fontFamily: 'Comforta'),
       home: HomePage(),
       initialRoute: WelcomePage.id,
       routes: {
