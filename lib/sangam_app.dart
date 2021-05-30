@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/ui/pages/home_page.dart';
-import 'package:sangam/ui/pages/login_page.dart';
-import 'package:sangam/ui/pages/register.dart';
-import 'package:sangam/ui/pages/welcome.dart';
+import 'package:sangam/src/ui/pages/home_page.dart';
+import 'package:sangam/src/ui/pages/login_page.dart';
+import 'package:sangam/src/ui/pages/register.dart';
+import 'package:sangam/src/ui/pages/welcome.dart';
 
 class SangamApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -10,7 +10,10 @@ class SangamApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.cyan, fontFamily: 'Comforta'),
+      theme: ThemeData(
+        primarySwatch: Colors.cyan,
+        fontFamily: 'Comforta',
+      ),
       home: HomePage(),
       initialRoute: WelcomePage.id,
       routes: {
