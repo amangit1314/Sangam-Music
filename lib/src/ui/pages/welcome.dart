@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sangam/src/ui/pages/login_page.dart';
+import 'package:sangam/src/ui/pages/register.dart';
 
 class WelcomePage extends StatefulWidget {
   static String id = 'welcome_page';
@@ -46,7 +47,14 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                   ),
                   onPressed: () {
-                    LoginPage();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return LoginPage();
+                        },
+                      ),
+                    );
                   },
                 ),
               ),
@@ -69,7 +77,14 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                   ),
                   onPressed: () {
-                    LoginPage();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SignUpPage();
+                        },
+                      ),
+                    );
                   },
                 ),
               ),

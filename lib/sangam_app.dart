@@ -15,7 +15,7 @@ class SangamApp extends StatelessWidget {
         fontFamily: 'Comforta',
       ),
       home: HomePage(),
-      initialRoute: WelcomePage.id,
+      initialRoute: HomePage.id,
       routes: {
         WelcomePage.id: (context) => WelcomePage(),
         LoginPage.id: (context) => LoginPage(),

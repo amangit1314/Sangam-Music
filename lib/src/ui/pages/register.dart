@@ -10,17 +10,17 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [],
-      ),
       backgroundColor: Color.fromRGBO(18, 22, 64, 1.0),
-      body: Column(children: <Widget>[
-        Image(
-          image: AssetImage('assets/images/Sangam.png'),
-          width: 414,
-          height: 278,
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(18, 22, 64, 1.0),
         ),
-      ]),
+        child: Column(
+          children: [],
+        ),
+      ),
     );
   }
 }

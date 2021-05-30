@@ -13,8 +13,10 @@ dependencies:
     sdk: flutter
   bloc: ^7.0.0
   cupertino_icons: ^1.0.3
+  curved_navigation_bar: ^0.3.7
   equatable: ^2.0.2
   flutter_bloc: ^7.0.0
+  flutter_svg: ^0.22.0
   font_awesome_flutter: ^9.0.0
   http: ^0.13.3
 
@@ -26,6 +28,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/icons/
 
   fonts:
     - family: Comforta
