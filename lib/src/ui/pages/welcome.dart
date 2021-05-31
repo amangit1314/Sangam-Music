@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sangam/src/ui/pages/home/home_page.dart';
 import 'package:sangam/src/ui/pages/login_page.dart';
 import 'package:sangam/src/ui/pages/register.dart';
 
@@ -81,7 +82,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return SignUpPage();
+                          return HomePage();
                         },
                       ),
                     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/src/ui/pages/home_page.dart';
+import 'package:sangam/src/ui/pages/home/home_page.dart';
 import 'package:sangam/src/ui/pages/login_page.dart';
 import 'package:sangam/src/ui/pages/register.dart';
 import 'package:sangam/src/ui/pages/welcome.dart';
@@ -15,7 +15,7 @@ class SangamApp extends StatelessWidget {
         fontFamily: 'Comforta',
       ),
       home: HomePage(),
-      initialRoute: HomePage.id,
+      initialRoute: WelcomePage.id,
       routes: {
         WelcomePage.id: (context) => WelcomePage(),
         LoginPage.id: (context) => LoginPage(),
