@@ -21,10 +21,9 @@ dependencies:
   flutter_icons: ^1.1.0
   flutter_svg: ^0.22.0
   font_awesome_flutter: ^9.0.0
+  google_sign_in: ^5.0.4
   http: ^0.13.3
-  # logger: ^1.0.0
   page_transition: ^2.0.2
-  # spotify_sdk: ^2.1.0
 
 dev_dependencies:
   flutter_test:
