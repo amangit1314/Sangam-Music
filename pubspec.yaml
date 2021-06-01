@@ -12,13 +12,19 @@ dependencies:
   flutter:
     sdk: flutter
   audioplayers: ^0.19.0
+  cloud_firestore: ^2.2.0
   cupertino_icons: ^1.0.3
   curved_navigation_bar: ^0.3.7
+  firebase_auth: ^1.2.0
+  firebase_core: ^1.2.0
+  flutter_dotenv: ^5.0.0
   flutter_icons: ^1.1.0
   flutter_svg: ^0.22.0
   font_awesome_flutter: ^9.0.0
   http: ^0.13.3
+  # logger: ^1.0.0
   page_transition: ^2.0.2
+  # spotify_sdk: ^2.1.0
 
 dev_dependencies:
   flutter_test:

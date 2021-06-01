@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sangam/src/functionalities/json/songs_json.dart';
-import 'package:sangam/src/ui/pages/album_page.dart';
-import 'package:sangam/src/ui/pages/settings.dart';
+import 'package:sangam/src/ui/pages/music/album_page.dart';
+import 'package:sangam/src/ui/pages/home/settings.dart';
 
 class GetBody extends StatefulWidget {
   @override

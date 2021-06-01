@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sangam/src/ui/pages/login/body.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
@@ -11,15 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(18, 22, 64, 1.0),
-      body: Column(
-        children: <Widget>[
-          Image(
-            image: AssetImage('assets/images/Sangam.png'),
-            width: 500,
-            height: 500,
-          ),
-        ],
-      ),
+      body: LoginBody(),
     );
   }
 }

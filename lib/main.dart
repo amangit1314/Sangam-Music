@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sangam/sangam_app.dart';
 
-Future<void> main() async {
+void main() {
   runApp(SangamApp());
 }

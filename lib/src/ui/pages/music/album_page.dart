@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sangam/src/functionalities/json/songs_json.dart';
-import 'package:sangam/src/ui/pages/music_detail_page.dart';
+import 'package:sangam/src/ui/pages/music/music_detail_page.dart';
 
 class AlbumPage extends StatefulWidget {
   final dynamic song;
