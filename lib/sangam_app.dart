@@ -3,6 +3,7 @@ import 'package:sangam/src/ui/pages/home/home_page.dart';
 import 'package:sangam/src/ui/pages/login/login_page.dart';
 import 'package:sangam/src/ui/pages/signup/register.dart';
 import 'package:sangam/src/ui/pages/welcome.dart';
+import 'package:sangam/src/utils/export.dart';
 
 class SangamApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -11,7 +12,7 @@ class SangamApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: kPrimaryColor,
         fontFamily: 'Comforta',
       ),
       home: HomePage(),

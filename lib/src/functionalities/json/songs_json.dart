@@ -7,6 +7,8 @@ const List song_type_1 = [
   "Classic",
   "Pop",
   "R&B",
+  "Opera",
+  "Romantic"
 ];
 const List song_type_2 = [
   "Podcasts",

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/src/ui/pages/home/body.dart';
-import 'package:sangam/src/ui/pages/home/nav_bar.dart';
+import 'package:sangam/src/ui/pages/home/components/body.dart';
+import 'package:sangam/src/ui/pages/home/components/nav_bar.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'home_page';

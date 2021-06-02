@@ -294,7 +294,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                 ),
               )
             ],
-          )
+          ),
         ],
       ),
     );

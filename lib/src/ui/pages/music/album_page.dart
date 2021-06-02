@@ -3,6 +3,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sangam/src/functionalities/json/songs_json.dart';
 import 'package:sangam/src/ui/pages/music/music_detail_page.dart';
+import 'package:sangam/src/utils/export.dart';
 
 class AlbumPage extends StatefulWidget {
   final dynamic song;
@@ -13,10 +14,6 @@ class AlbumPage extends StatefulWidget {
 }
 
 class _AlbumPageState extends State<AlbumPage> {
-  static const Color primary = Color.fromRGBO(18, 22, 64, 1.0);
-  static const Color black = Color(0xFF000000);
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color grey = Color(0xFF5f5f5f);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
