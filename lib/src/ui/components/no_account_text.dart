@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/src/ui/pages/signup/register.dart';
+import 'package:sangam/src/ui/pages/auth/register.dart';
 import 'package:sangam/src/utils/export.dart';
 
 class NoAccountText extends StatelessWidget {

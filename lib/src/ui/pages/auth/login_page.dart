@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/src/ui/pages/login/components/body.dart';
+
+import 'components/body.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
