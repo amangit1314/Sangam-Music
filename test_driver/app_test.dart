@@ -1,4 +1,7 @@
 // Imports the Flutter Driver API.
+import 'dart:html';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
@@ -21,5 +24,15 @@ void main() {
     tearDownAll(() async {
       driver.close();
     });
+  });
+
+  test('create account', () async {
+    await driver.tap(UserCredential);
+    await driver.enterText("example@gmail.com");
+
+    await driver.tap(PasswordCredential);
+    await driver.enterText("123456");
+
+    await driverLog.tap(SignUpAccountButton)
   });
 }
