@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/src/functionalities/models/Tracks.dart';
+import 'package:sangam/src/models/Tracks.dart';
 
 class Cart {
   final Track track;

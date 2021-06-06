@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'components/body.dart';
+import 'package:sangam/src/ui/pages/auth/login/components/body.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
@@ -17,8 +16,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-
 
 /*
 new InputDecoration(

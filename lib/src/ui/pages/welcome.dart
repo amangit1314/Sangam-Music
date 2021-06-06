@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sangam/src/ui/pages/home/home_page.dart';
-import 'package:sangam/src/ui/pages/auth/login_page.dart';
-import 'package:sangam/src/ui/pages/auth/register.dart';
+import 'package:sangam/src/ui/pages/auth/login/login_page.dart';
+import 'package:sangam/src/ui/pages/auth/signup/sign_up.dart';
 
 class WelcomePage extends StatefulWidget {
   static String id = 'welcome_page';
