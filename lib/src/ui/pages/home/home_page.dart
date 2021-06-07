@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sangam/src/ui/pages/home/components/body.dart';
 import 'package:sangam/src/ui/pages/home/components/nav_bar.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   static String id = 'home_page';
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

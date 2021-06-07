@@ -23,8 +23,8 @@ class _WelcomePageState extends State<WelcomePage> {
         child: SafeArea(
           child: Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
                 Image(
                   image: AssetImage('assets/images/Sangam.png'),
                   width: 500,
