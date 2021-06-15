@@ -1,6 +1,5 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:sangam/src/controllers/authController.dart';
+import 'package:sangam/src/services/auth_service.dart';
 
 class ResetPassword extends StatefulWidget {
   @override
@@ -68,26 +67,24 @@ class _ResetPasswordState extends State<ResetPassword> {
               )),
           SizedBox(height: 25.0),
           TextFormField(
-              decoration: InputDecoration(
-                labelText: 'EMAIL',
-                labelStyle: TextStyle(
-                    fontFamily: 'Comfortaa',
-                    fontSize: 12.0,
-                    color: Colors.grey.withOpacity(0.5)),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: greenColor),
-                ),
+            decoration: InputDecoration(
+              labelText: 'EMAIL',
+              labelStyle: TextStyle(
+                  fontFamily: 'Comfortaa',
+                  fontSize: 12.0,
+                  color: Colors.grey.withOpacity(0.5)),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: greenColor),
               ),
-              onChanged: (value) {
-                this.email = value;
-              },
-              validator: (value) => value!.isEmpty
-                  ? 'Email is required'
-                  : EmailValidator.validate(value)),
+            ),
+            onChanged: (value) {
+              this.email = value;
+            },
+          ),
           SizedBox(height: 50.0),
           GestureDetector(
             onTap: () {
-              if (checkFields()) AuthController().resetPasswordLink(email);
+              if (checkFields()) AuthService().resetPasswordLink(email);
               Navigator.of(context).pop();
             },
             child: Container(

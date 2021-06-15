@@ -1,50 +1,50 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
+import 'package:sangam/src/services/error_handler.dart';
 import 'package:sangam/src/views/pages/auth/login/login_page.dart';
 import 'package:sangam/src/views/pages/home/home_page.dart';
 
 class AuthService {
-  //Determine if the user is authenticated.
+  //? Determine if the user is authenticated or handle auth
   handleAuth() {
     return StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (BuildContext context, snapshot) {
-          if (snapshot.hasData) {
-            return HomePage();
-          } else
-            return LoginPage();
-        });
-  }
-
-  //Sign out
-  signOut() {
-    FirebaseAuth.instance.signOut();
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (BuildContext context, snapshot) {
+        if (snapshot.hasData) {
+          return HomePage();
+        } else
+          return LoginPage();
+      },
+    );
   }
 
   //Sign In
   signIn(String email, String password, context) {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password)
-        .then((val) {
-      print('signed in');
-    }).catchError((e) {
-      ErrorHandler().errorDialog(context, e);
-    });
+        .then(
+      (val) {
+        print('signed in');
+      },
+    ).catchError(
+      (e) {
+        ErrorHandler().errorDialog(context, e);
+      },
+    );
   }
 
-  //fb signin
-
+  //? Facebook Login Function
   fbSignIn() async {
     final fb = FacebookLogin();
 
-// Log in
+    //* Log in
     final res = await fb.logIn(permissions: [
       FacebookPermission.publicProfile,
       FacebookPermission.email,
     ]);
 
-// Check result status
+    //* Check result status
     switch (res.status) {
       case FacebookLoginStatus.success:
         // Logged in
@@ -80,14 +80,20 @@ class AuthService {
     }
   }
 
-  //Signup a new user
+  //? Function for Sign up a new user
   signUp(String email, String password) {
     return FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
   }
 
-  //Reset Password
+  //? Reset Password Function
   resetPasswordLink(String email) {
     FirebaseAuth.instance.sendPasswordResetEmail(email: email);
   }
+
+  //? Sign out Function
+  signOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ErrorHandler {
   //Error Dialogs
-  Future<bool>? errorDialog(BuildContext context, e) {
+  Future<void>? errorDialog(BuildContext context, e) async {
     return showDialog(
       context: context,
       barrierDismissible: true,

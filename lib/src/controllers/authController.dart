@@ -16,20 +16,21 @@ class AuthController extends GetxController {
 
   @override
   void onInit() {
-     _firebaseUser.bindStream(_auth.authStateChanges());
+    _firebaseUser.bindStream(_auth.authStateChanges());
     super.onInit();
   }
 
-    //Determine if the user is authenticated.
+  //* Determine if the user is authenticated.
   handleAuth() {
     return StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (BuildContext context, snapshot) {
-          if (snapshot.hasData) {
-            return HomePage();
-          } else
-            return LoginPage();
-        });
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (BuildContext context, snapshot) {
+        if (snapshot.hasData) {
+          return HomePage();
+        } else
+          return LoginPage();
+      },
+    );
   }
 
   //! Creating User
@@ -40,56 +41,56 @@ class AuthController extends GetxController {
       Get.back();
     } catch (e) {
       Get.snackbar(
-        "Error logging in",
+        "Error creating account",
         "message",
         snackPosition: SnackPosition.BOTTOM,
       );
     }
   }
 
-//* Login
+  //! Login Function
   void login(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } catch (e) {
       Get.snackbar(
-        "Error signing out",
+        "Error signing in",
         "message",
         snackPosition: SnackPosition.BOTTOM,
       );
     }
   }
 
-//? Login in with GOOGLE
-Future<UserCredential> signInWithGoogle() async {
-  // Trigger the authentication flow
-  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  //? Login in with GOOGLE
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-  // Obtain the auth details from the request
-  final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
 
-  // Create a new credential
-  final credential = GoogleAuthProvider.credential(
-    accessToken: googleAuth.accessToken,
-    idToken: googleAuth.idToken,
-  );
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
 
-  // Once signed in, return the UserCredential
-  return await FirebaseAuth.instance.signInWithCredential(credential);
-}
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
 
-  //fb signin
-
+  //? Log in with Facebook
   fbSignIn() async {
     final fb = FacebookLogin();
 
-// Log in
+    // Log in
     final res = await fb.logIn(permissions: [
       FacebookPermission.publicProfile,
       FacebookPermission.email,
     ]);
 
-// Check result status
+    // Check result status
     switch (res.status) {
       case FacebookLoginStatus.success:
         // Logged in
@@ -125,19 +126,17 @@ Future<UserCredential> signInWithGoogle() async {
     }
   }
 
-//Sign out
+  //! Sign out Function
   void signOut() async {
     try {
       await _auth.signOut();
       Get.find<UserController>().clear();
     } catch (e) {
       Get.snackbar(
-        "Error creating account",
+        "Error signing out",
         "message",
         snackPosition: SnackPosition.BOTTOM,
       );
     }
   }
 }
-
-
