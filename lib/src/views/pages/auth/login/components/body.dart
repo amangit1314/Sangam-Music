@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sangam/src/ui/pages/home/home_page.dart';
+import 'package:sangam/src/views/pages/home/home_page.dart';
 
 class LoginBody extends StatefulWidget {
   @override

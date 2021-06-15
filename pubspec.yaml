@@ -6,24 +6,27 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.13.1 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  audioplayers: ^0.19.0
-  cloud_firestore: ^2.2.0
+  audioplayers: 
+  cloud_firestore: 
   cupertino_icons: ^1.0.3
-  curved_navigation_bar: ^0.3.7
-  firebase_auth: ^1.3.0
-  firebase_core: ^1.2.1
-  flutter_icons: ^1.1.0
-  flutter_svg: ^0.22.0
-  font_awesome_flutter: ^9.0.0
-  get: ^4.1.4
-  google_sign_in: ^5.0.4
-  http: ^0.13.3
-  page_transition: ^2.0.2
+  curved_navigation_bar: 
+  firebase_auth: 
+  firebase_core: 
+  flutter_icons: 
+  flutter_svg: 
+  font_awesome_flutter: 
+  flutter_login_facebook:
+  get: 
+  google_sign_in: 
+  http: 
+  mockito:
+  page_transition:
+  email_validator: 
 
 dev_dependencies:
   flutter_driver:
@@ -32,7 +35,7 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-  mockito: null
+  build_runner: ^1.11.0
   test: any
 
 flutter:
