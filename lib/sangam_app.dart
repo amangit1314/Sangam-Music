@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sangam/src/views/pages/auth/login/login_page.dart';
-import 'package:sangam/src/views/pages/auth/signup/sign_up.dart';
-import 'package:sangam/src/views/pages/home/home_page.dart';
-import 'package:sangam/src/views/pages/welcome.dart';
+import 'package:sangam/views/pages/auth/login/login_page.dart';
+import 'package:sangam/views/pages/auth/signup/sign_up.dart';
+import 'package:sangam/views/pages/home/home_page.dart';
+import 'package:sangam/views/pages/welcome.dart';
 
 class SangamApp extends StatelessWidget {
   // This widget is the root of your application.
