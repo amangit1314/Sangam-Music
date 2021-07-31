@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sangam/controllers/authController.dart';
-import 'package:sangam/views/pages/auth/login/login_page.dart';
+import 'package:sangam/pages/auth/login/login_page.dart';
 
 class SignUpPage extends GetWidget<AuthController> {
   static String id = "sign_up_screen";

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sangam/views/pages/activity.dart';
-import 'package:sangam/views/pages/profile_page.dart';
-import 'package:sangam/views/pages/search.dart';
-import 'package:sangam/views/pages/settings.dart';
+import 'package:sangam/pages/activity.dart';
+import 'package:sangam/pages/profile_page.dart';
+import 'package:sangam/pages/search.dart';
+import 'package:sangam/pages/settings.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'home_page';

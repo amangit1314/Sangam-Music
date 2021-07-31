@@ -4,8 +4,8 @@ import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sangam/controllers/userController.dart';
-import 'package:sangam/views/pages/auth/login/login_page.dart';
-import 'package:sangam/views/pages/home/home_page.dart';
+import 'package:sangam/pages/auth/login/login_page.dart';
+import 'package:sangam/pages/home/home_page.dart';
 
 class AuthController extends GetxController {
 

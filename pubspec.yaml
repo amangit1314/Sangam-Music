@@ -11,15 +11,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore:
+  cloud_firestore: ^2.3.0
   cupertino_icons: ^1.0.2
-  firebase_auth:
-  firebase_core:
-  flutter_login_facebook:
-  get:
-  google_sign_in:
-  http:
-  email_validator:
+  email_validator: ^2.0.1
+  firebase_auth: ^2.0.0
+  firebase_core: ^1.3.0
+  flutter_login_facebook: ^1.0.1
+  flutter_sound: ^8.3.4
+  get: ^4.1.4
+  google_fonts: ^2.1.0
+  google_sign_in: ^5.0.4
+  http: ^0.13.3
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:

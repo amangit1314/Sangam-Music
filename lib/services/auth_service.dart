@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:sangam/services/error_handler.dart';
-import 'package:sangam/views/pages/auth/login/login_page.dart';
-import 'package:sangam/views/pages/home/home_page.dart';
+import 'package:sangam/pages/auth/login/login_page.dart';
+import 'package:sangam/pages/home/home_page.dart';
 
 class AuthService {
   //? Determine if the user is authenticated or handle auth
