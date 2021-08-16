@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/src/ui/pages/music/components/body.dart';
+import 'package:sangam/ui/pages/music/components/body.dart';
 
 class MusicPlayer extends StatelessWidget {
   final String title;
@@ -11,14 +11,14 @@ class MusicPlayer extends StatelessWidget {
   final String duration;
 
   const MusicPlayer(
-      {Key key,
-      this.title,
-      this.description,
-      this.color,
-      this.img,
-      this.songUrl,
-      this.artistName,
-      this.duration})
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.color,
+      required this.img,
+      required this.songUrl,
+      required this.artistName,
+      required this.duration})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

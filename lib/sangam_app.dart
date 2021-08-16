@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:sangam/src/ui/pages/home/home_page.dart';
-import 'package:sangam/src/ui/pages/auth/login_page.dart';
-import 'package:sangam/src/ui/pages/auth/register.dart';
-import 'package:sangam/src/ui/pages/welcome.dart';
-import 'package:sangam/src/utils/export.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:sangam/pages/auth/login/login_page.dart';
+import 'package:sangam/pages/auth/signup/sign_up.dart';
+import 'package:sangam/pages/home/home_page.dart';
+import 'package:sangam/pages/welcome.dart';
 
 class SangamApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: kPrimaryColor,
+        textTheme: GoogleFonts.comfortaaTextTheme(),
         fontFamily: 'Comforta',
       ),
       home: HomePage(),
@@ -26,3 +27,4 @@ class SangamApp extends StatelessWidget {
     );
   }
 }
+

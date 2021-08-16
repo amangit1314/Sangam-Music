@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/src/functionalities/models/Tracks.dart';
+import 'package:sangam/functionalities/models/Tracks.dart';
 
 class Cart {
   final Track track;
   final int numOfItem;
 
-  Cart({@required this.track, @required this.numOfItem});
+  Cart({required this.track, required this.numOfItem});
 }
 
 // Demo data for our cart

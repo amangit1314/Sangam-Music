@@ -1,8 +1,7 @@
 import 'dart:io';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 
 class MusicDetailPage extends StatefulWidget {
   final String title;

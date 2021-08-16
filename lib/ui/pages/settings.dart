@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/src/ui/pages/home/home_page.dart';
 
 class Settings extends StatefulWidget {
   @override
