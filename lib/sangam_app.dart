@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/src/ui/pages/home/home_page.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sangam/pages/auth/login/login_page.dart';
-import 'package:sangam/pages/auth/signup/sign_up.dart';
-import 'package:sangam/pages/home/home_page.dart';
-import 'package:sangam/pages/welcome.dart';
+import 'package:sangam/ui/pages/home/home_page.dart';
+import 'package:sangam/ui/pages/settings.dart';
+import 'package:sangam/ui/pages/welcome.dart';
 
 class SangamApp extends StatelessWidget {
   @override
@@ -19,12 +17,10 @@ class SangamApp extends StatelessWidget {
       home: HomePage(),
       initialRoute: WelcomePage.id,
       routes: {
-        WelcomePage.id: (context) => WelcomePage(),
-        LoginPage.id: (context) => LoginPage(),
-        SignUpPage.id: (context) => SignUpPage(),
-        HomePage.id: (context) => HomePage(),
+        '/welcome': (context) => WelcomePage(),
+        '/home': (context) => HomePage(),
+        'settings': (context) => Settings(),
       },
     );
   }
 }
-

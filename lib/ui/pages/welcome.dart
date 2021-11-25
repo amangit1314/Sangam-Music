@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/ui/pages/auth/login_page.dart';
+//import 'package:sangam/ui/pages/auth/login_page.dart';
 import 'package:sangam/ui/pages/home/home_page.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -51,7 +51,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return LoginPage();
+                          return HomePage();
                         },
                       ),
                     );
