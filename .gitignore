@@ -39,6 +39,8 @@ lib/firebase_options.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
+lib/firebase_options.dart
+android/app/google-services.json
 
 # Symbolication related
 app.*.symbols
