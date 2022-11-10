@@ -34,6 +34,8 @@
 .pub/
 /build/
 /android/app/google-services.json
+/lib/firebase_options.dart
+lib/firebase_options.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
@@ -50,4 +52,7 @@ app.*.map.json
 /android/app/release
 
 #Files
-credential.txt/
+/credential.txt/
+**/android/app/google-services.json/
+/android/app/google-services.json/
+android/app/google-services.json/
