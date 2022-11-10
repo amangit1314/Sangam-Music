@@ -8,6 +8,9 @@
 .buildlog/
 .history
 .svn/
+/fonts/
+/screenshots/
+/screenshots/credential.txt
 
 # IntelliJ related
 *.iml
