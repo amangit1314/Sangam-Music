@@ -34,7 +34,7 @@
 .pub/
 /build/
 ./android/app/google-services.json
-/lib/firebase_options.dart
+./lib/firebase_options.dart
 lib/firebase_options.dart
 
 # Web related
