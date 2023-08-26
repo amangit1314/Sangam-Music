@@ -1,7 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sangam/features/home/data/data.dart';
 import 'package:sangam/features/profile/presentation/profile_page.dart';
+
+import 'grid_view_item.dart';
 
 class HomeBody extends StatefulWidget {
   @override
@@ -9,14 +13,6 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-  List songs = [
-    'assets/images/img_1.jpg',
-    'assets/images/img_2.jpg',
-    'assets/images/img_3.jpg',
-    'assets/images/img_4.jpg',
-    'assets/images/img_5.jpg',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,8 +30,7 @@ class _HomeBodyState extends State<HomeBody> {
                   child: Opacity(
                     opacity: 0.5,
                     child: Container(
-                      decoration:
-                          BoxDecoration(color: Color.fromRGBO(18, 22, 64, 1.0)),
+                      decoration: BoxDecoration(color: Colors.transparent),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -47,25 +42,51 @@ class _HomeBodyState extends State<HomeBody> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          CircleAvatar(
-                            radius: 25,
-                            backgroundColor: Colors.white,
-                            child: IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return ProfilePage();
-                                    },
-                                  ),
-                                );
-                              },
-                              icon: Icon(
-                                Icons.person,
-                                color: Colors.black,
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return ProfilePage();
+                                  }));
+                                },
+                                icon: FaIcon(FontAwesomeIcons.bell,
+                                    color: Colors.white),
                               ),
-                            ),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return ProfilePage();
+                                      },
+                                    ),
+                                  );
+                                },
+                                icon: FaIcon(
+                                  FontAwesomeIcons.clockRotateLeft,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return ProfilePage();
+                                      },
+                                    ),
+                                  );
+                                },
+                                icon: FaIcon(
+                                  FontAwesomeIcons.gear,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -74,38 +95,53 @@ class _HomeBodyState extends State<HomeBody> {
                 ),
               ),
               SizedBox(height: 20),
-              GridView.count(
-                crossAxisCount: 4,
-                childAspectRatio: 1.0,
-                padding: const EdgeInsets.all(4.0),
-                mainAxisSpacing: 4.0,
-                crossAxisSpacing: 4.0,
-                children: [
-                  Image.asset(
-                    songs[0],
-                    height: 100,
-                    width: 100,
+              Expanded(
+                child: Center(
+                  child: GridView(
+                    padding: const EdgeInsets.all(2),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                    ),
+                    children: [
+                      GridViewItem(text: 'String', imgUrl: songs[0]),
+                      GridViewItem(text: 'To', imgUrl: songs[1]),
+                      GridViewItem(text: 'Show', imgUrl: songs[2]),
+                      GridViewItem(text: 'Something', imgUrl: songs[3]),
+                      GridViewItem(text: 'To', imgUrl: songs[4]),
+                      GridViewItem(text: 'You', imgUrl: songs[0]),
+                    ],
                   ),
-                  Image.asset(
-                    songs[0],
-                    height: 100,
-                    width: 100,
-                  ),
-                  Image.asset(
-                    songs[0],
-                    height: 100,
-                    width: 100,
-                  ),
-                  Image.asset(
-                    songs[0],
-                    height: 100,
-                    width: 100,
-                  ),
-                ],
-              ),
+                ),
+              )
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class GridItem extends StatelessWidget {
+  final String? text;
+  final String? img;
+  const GridItem({
+    Key? key,
+    this.text = 'String is expanded',
+    this.img =
+        'https://media.comicbook.com/2021/03/boruto-naruto-hokage-anime-1260549.jpeg?auto=webp',
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Colors.black.withOpacity(.3),
+      ),
+      child: ListTile(
+        leading: Image.network(img.toString()),
+        title: Text(text.toString(), overflow: TextOverflow.ellipsis),
       ),
     );
   }

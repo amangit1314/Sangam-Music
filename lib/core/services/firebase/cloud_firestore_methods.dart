@@ -1,8 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 
 // A class which contains several firestore methods
@@ -42,19 +40,19 @@ class FirestoreMethods {
     return res;
   }
 
-  // a method for implemeting (like a post) feature
-  Future<String> likePost(String postId, String uid, List likes) async {
+  // a method for implemeting (like a song) feature
+  Future<String> likePost(String songId, String uid, List likes) async {
     String res = "Some error occurred";
     // using try and catch block to handle all cases and errors
     try {
       if (likes.contains(uid)) {
         // if the likes list contains the user uid, we need to remove it
-        _firestore.collection('posts').doc(postId).update({
+        _firestore.collection('songs').doc(songId).update({
           'likes': FieldValue.arrayRemove([uid])
         });
       } else {
         // else we need to add uid to the likes array
-        _firestore.collection('posts').doc(postId).update({
+        _firestore.collection('songs').doc(songId).update({
           'likes': FieldValue.arrayUnion([uid])
         });
       }
@@ -108,42 +106,5 @@ class FirestoreMethods {
       res = err.toString();
     }
     return res;
-  }
-
-  // Follow User
-  Future<void> followUser(String uid, String followId) async {
-    try {
-      // getting uid of user from snapshot
-      DocumentSnapshot snap =
-          await _firestore.collection('users').doc(uid).get();
-
-      // getting the list of following from the snap
-      List following = (snap.data()! as dynamic)['following'];
-
-      if (following.contains(followId)) {
-        // if the list of following contains the followId, we need to remove it
-        await _firestore.collection('users').doc(followId).update({
-          'followers': FieldValue.arrayRemove([uid])
-        });
-
-        await _firestore.collection('users').doc(uid).update({
-          'following': FieldValue.arrayRemove([followId])
-        });
-      } else {
-        // else we need to add uid to the following array
-        await _firestore.collection('users').doc(followId).update({
-          'followers': FieldValue.arrayUnion([uid])
-        });
-
-        await _firestore.collection('users').doc(uid).update({
-          'following': FieldValue.arrayUnion([followId])
-        });
-      }
-    } catch (e) {
-      GetSnackBar(
-        message: e.toString(),
-        backgroundColor: Colors.red,
-      ).show();
-    }
   }
 }

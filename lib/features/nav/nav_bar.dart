@@ -1,10 +1,7 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sangam/features/home/presentation/home_page.dart';
-import 'package:sangam/features/profile/presentation/profile_page.dart';
 import 'package:sangam/features/search/presentation/search_page.dart';
-import 'package:sangam/features/settings/settings.dart';
 
 class NavPage extends StatefulWidget {
   @override
@@ -24,33 +21,35 @@ class _NavPageState extends State<NavPage> {
     List<Widget> _pages = [
       HomePage(),
       SearchPage(),
-      ProfilePage(),
-      Settings(),
     ];
 
     return Scaffold(
       extendBody: true,
       body: _pages[_currentIndex],
-      bottomNavigationBar: ClipRRect(
-        child: CurvedNavigationBar(
-          height: 50,
-          backgroundColor: Colors.transparent,
-          items: <Widget>[
-            FaIcon(
-              FontAwesomeIcons.house,
-              size: 30,
-            ),
-            FaIcon(
-              FontAwesomeIcons.magnifyingGlass,
-              size: 30,
-            ),
-            FaIcon(
-              FontAwesomeIcons.heart,
-              size: 30,
-            ),
-          ],
-          onTap: onTap,
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        elevation: 0,
+        backgroundColor: Colors.black.withOpacity(.2),
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(0.3),
+        items: const [
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.house, size: 20),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.magnifyingGlass, size: 20),
+            label: 'search',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.floppyDisk, size: 20),
+            label: 'Saved',
+          ),
+        ],
+        onTap: onTap,
       ),
     );
   }

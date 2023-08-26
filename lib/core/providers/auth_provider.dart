@@ -1,29 +1,40 @@
+// ignore_for_file: unused_field
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../services/firebase/auth/auth_methods.dart';
+import '../repositories/auth_repository.dart';
 
 class AuthProvider with ChangeNotifier {
   User? _user;
-  // creating object of the AuthMehods class
-  final AuthMethods _authMethods = AuthMethods();
 
-  // a getter to get the user from getUser method
-  User get getUser => _user!;
+  final AuthRepository authRepository = AuthRepository();
 
-  // a future method to login the user
-  Future<void> loginUser() async {
-    User user =
-        (await _authMethods.loginUser(email: null, password: null)) as User;
+  User get getUser => authRepository.user as User;
+
+  Future<void> loginUser(
+      {required String email, required String password}) async {
+    User user = (await authRepository.loginWithCredentials(
+      email: email,
+      password: password,
+    )) as User;
     _user = user;
     notifyListeners();
   }
 
-  // a future method to register the user
-  Future<void> registerUser() async {
-    User user = (await _authMethods.signUpUser(
-        email: '', password: 'null', username: '')) as User;
+  Future<void> registerUser(
+      {required String email, required String password, String? number}) async {
+    User user = (await authRepository.register(
+      email: email,
+      password: password,
+    )) as User;
     _user = user;
+    notifyListeners();
+  }
+
+  Future<void> logoutUser() async {
+    await authRepository.logOut();
+    _user = null;
     notifyListeners();
   }
 }

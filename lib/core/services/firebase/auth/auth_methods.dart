@@ -2,25 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:sangam/core/models/user.dart' as model;
-import 'package:sangam/features/auth/login/presentation/login_page.dart';
 import 'package:sangam/features/nav/nav_bar.dart';
+import 'package:sangam/models/user.dart' as model;
 
-// A class holding auth methods
+import '../../../../features/auth/view/login/login_screen.dart';
+
 class AuthMethods {
-  // Firebase auth instance
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  // Firebase firestore instance
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // a future method to get user derails from firebase
   Future<model.User> getUserDetails() async {
-    // getting the current user from firebase auth
     User currentUser = _auth.currentUser!;
-    // getting the user details from firestore
+
     final DocumentSnapshot snap =
         await _firestore.collection('users').doc(currentUser.uid).get();
-    // creating a user model from the snapshot
+
     return model.User.fromSnap(snap);
   }
 
@@ -31,45 +27,32 @@ class AuthMethods {
         if (snapshot.hasData) {
           return NavPage();
         } else {
-          return LogInPage();
+          return LogInScreen();
         }
       },
     );
   }
 
-  // a future method to register the user from firebase
   Future<String> signUpUser(
       {required String email,
       required String password,
       required String username,
-      String bio = ''
-      // required Uint8List file,
-      }) async {
+      String bio = ''}) async {
     String res = "Some error occured";
     try {
-      if (email.isNotEmpty || password.isNotEmpty || username.isNotEmpty
-          //||
-          // file != null
-          // ignore: unnecessary_null_comparison
-          ) {
-        //  register user using firebase method {createUserWithEmailAndPassword}
+      if (email.isNotEmpty || password.isNotEmpty || username.isNotEmpty) {
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
-        // file,
-        // String photoUrl = await StorageMethods()
-        //     .uploadImageToStorage('postPics',  false);
 
         model.User user = model.User(
           bio: bio,
           email: email,
           username: username,
-          //photoUrl: photoUrl,
           uid: cred.user!.uid,
           recentlyPlayed: [],
           favourites: [],
         );
 
-        //  add user to our database
         await _firestore
             .collection('users')
             .doc(cred.user!.uid)
@@ -88,7 +71,6 @@ class AuthMethods {
     return res;
   }
 
-  // to login the user
   Future<String> loginUser({required email, required password}) async {
     String res = "❓error occured";
     try {
@@ -105,7 +87,6 @@ class AuthMethods {
     return res;
   }
 
-  // signin with google
   Future<UserCredential> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser =
         await GoogleSignIn(scopes: <String>["email"]).signIn();
@@ -121,7 +102,6 @@ class AuthMethods {
     return await _auth.signInWithCredential(credential);
   }
 
-  // to logout the user
   Future<void> signOut() async {
     await _auth.signOut();
   }

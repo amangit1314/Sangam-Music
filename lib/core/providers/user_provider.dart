@@ -1,21 +1,26 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 
+import '../../models/user_model.dart';
+import '../repositories/auth_repository.dart';
 import '../services/firebase/auth/auth_methods.dart';
 
-// A Change Notifier inherited State Class which can be used or listen at the same time at any place where the specified state in this class is required
 class UserProvider with ChangeNotifier {
-  User? _user;
-  // creating object of the AuthMehods class
+  firebase_auth.User? _user;
+
   final AuthMethods _authMethods = AuthMethods();
+  final AuthRepository authRepository = AuthRepository();
 
-  // a getter to get the user from getUser method
-  User get getUser => _user!;
+  firebase_auth.User get getUser => _user!;
 
-  // a future method to refresh the user
   Future<void> refreshUser() async {
-    User user = (await _authMethods.getUserDetails()) as User;
+    firebase_auth.User user =
+        (await _authMethods.getUserDetails()) as firebase_auth.User;
     _user = user;
     notifyListeners();
+  }
+
+  Stream<User> get user {
+    return authRepository.user;
   }
 }

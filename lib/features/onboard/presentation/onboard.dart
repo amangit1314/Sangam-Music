@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sangam/features/auth/view/login/login_screen.dart';
+import 'package:sangam/features/nav/nav_bar.dart';
 import 'package:sangam/features/onboard/presentation/indicator.dart';
 import 'package:sangam/features/onboard/presentation/onboard_content.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../auth/login/presentation/login_page.dart';
 import '../data/data.dart';
 
 class Onboard extends StatefulWidget {
@@ -26,7 +27,7 @@ class _OnboardState extends State<Onboard> {
     } else {
       await prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => new LogInPage()));
+          new MaterialPageRoute(builder: (context) => new LogInScreen()));
     }
   }
 
@@ -37,6 +38,13 @@ class _OnboardState extends State<Onboard> {
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
+    Future.delayed(
+      const Duration(seconds: 2),
+      () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => NavPage()),
+      ),
+    );
     super.initState();
   }
 
@@ -63,7 +71,7 @@ class _OnboardState extends State<Onboard> {
           ),
           child: Column(
             children: [
-              Expanded(
+              Flexible(
                 child: PageView.builder(
                   controller: _pageController,
                   scrollDirection: Axis.horizontal,
@@ -97,10 +105,14 @@ class _OnboardState extends State<Onboard> {
                     width: 60,
                     child: ElevatedButton(
                       onPressed: () {
-                        _pageController.nextPage(
-                          duration: const Duration(milliseconds: 200),
-                          curve: Curves.ease,
-                        );
+                        // _pageController.nextPage(
+                        //   duration: const Duration(milliseconds: 200),
+                        //   curve: Curves.ease,
+                        // );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => LogInPage()),
+                        // );
                       },
                       style: ElevatedButton.styleFrom(shape: CircleBorder()),
                       child: Icon(

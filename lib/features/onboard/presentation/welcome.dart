@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/features/auth/login/presentation/login_page.dart';
-import 'package:sangam/features/auth/register/presentation/register.dart';
+import 'package:sangam/features/auth/view/login/login_screen.dart';
 
-class WelcomePage extends StatefulWidget {
+import '../../auth/view/register/register_screen.dart';
+
+class WelcomePage extends StatelessWidget {
   static String id = 'welcome_page';
-  @override
-  _WelcomePageState createState() => _WelcomePageState();
-}
 
-class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +46,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return LogInPage();
+                          return LogInScreen();
                         },
                       ),
                     );
@@ -79,7 +76,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return SignUpPage();
+                          return RegisterScreen();
                         },
                       ),
                     );

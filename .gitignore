@@ -33,13 +33,13 @@
 .pub-cache/
 .pub/
 /build/
-/android/app/google-services.json
+./android/app/google-services.json
 /lib/firebase_options.dart
 lib/firebase_options.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
-lib/firebase_options.dart
+lib/firebase_options.darts
 android/app/google-services.json
 
 # Symbolication related
