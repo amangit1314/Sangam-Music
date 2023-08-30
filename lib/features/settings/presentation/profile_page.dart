@@ -5,7 +5,7 @@ class ProfilePage extends StatelessWidget {
   static String id = 'profile_page';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text('Profile'),
       ),

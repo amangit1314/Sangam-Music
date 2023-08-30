@@ -28,7 +28,7 @@ class AuthMethods {
       stream: _auth.authStateChanges(),
       builder: (BuildContext context, snapshot) {
         if (snapshot.hasData) {
-          return NavPage();
+          return const NavPage();
         } else {
           return const LogInScreen();
         }

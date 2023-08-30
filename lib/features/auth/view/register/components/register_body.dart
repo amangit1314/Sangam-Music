@@ -7,12 +7,12 @@ class RegisterBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(18, 22, 64, 1.0),
+      backgroundColor: const Color.fromRGBO(18, 22, 64, 1.0),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(color: Color.fromRGBO(18, 22, 64, 1.0)),
-        child: Column(
+        decoration: const BoxDecoration(color: Color.fromRGBO(18, 22, 64, 1.0)),
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Image(
@@ -21,7 +21,7 @@ class RegisterBody extends StatelessWidget {
               height: 400,
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: RegisterationForm(),
             ),
           ],

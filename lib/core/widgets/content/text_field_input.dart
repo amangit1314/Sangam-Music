@@ -41,7 +41,7 @@ class TextFieldInput extends StatelessWidget {
 
     return TextField(
       style: GoogleFonts.poppins(
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
           color: Colors.white,
         ),
       ),
@@ -58,7 +58,7 @@ class TextFieldInput extends StatelessWidget {
           ),
         ),
         hintStyle: GoogleFonts.poppins(
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             color: Colors.white54,
             fontSize: 13.0,
             fontWeight: FontWeight.w500,

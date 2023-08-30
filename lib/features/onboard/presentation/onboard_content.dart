@@ -12,16 +12,16 @@ class OnboardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: double.infinity,
       width: double.maxFinite,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Spacer(),
+          const Spacer(),
           Lottie.network(lottieAsset, height: 300),
-          Spacer(),
+          const Spacer(),
           Text(
             text,
             textAlign: TextAlign.center,
@@ -30,13 +30,13 @@ class OnboardContent extends StatelessWidget {
                 .headlineSmall!
                 .copyWith(fontWeight: FontWeight.w500, color: Colors.white),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             description,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

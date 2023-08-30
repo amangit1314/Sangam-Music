@@ -25,7 +25,7 @@ class ApiService {
           'https://shazam-core.p.rapidapi.com/v2/tracks/details?trackid=400085')),
       headers: {
         'x-rapidapi-host': 'shazam-core.p.rapidapi.com',
-        'x-rapidapi-key': '$apiKey'
+        'x-rapidapi-key': apiKey
       },
     );
     print(response.body);

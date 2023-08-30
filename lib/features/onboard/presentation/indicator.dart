@@ -16,9 +16,9 @@ class Indicator extends StatelessWidget {
         color: isActive
             ? Colors.deepPurpleAccent
             : Colors.deepPurpleAccent.withOpacity(0.3),
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
     );
   }
 }

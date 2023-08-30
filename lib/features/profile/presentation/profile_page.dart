@@ -31,14 +31,14 @@ class ProfilePage extends StatelessWidget {
             ),
             //  username, email row
             const SizedBox(height: 10),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Username: '),
                 Text('username'),
               ],
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Email: '),

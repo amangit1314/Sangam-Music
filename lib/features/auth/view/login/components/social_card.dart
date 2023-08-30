@@ -13,7 +13,7 @@ class SocialCard extends StatelessWidget {
       radius: 20,
       child: Center(
         child: IconButton(
-          icon: FaIcon(
+          icon: const FaIcon(
             FontAwesomeIcons.google,
             size: 20,
           ),

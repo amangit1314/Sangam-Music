@@ -19,15 +19,15 @@ class _OnboardState extends State<Onboard> {
 
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool _seen = (prefs.getBool('seen') ?? false);
+    bool seen = (prefs.getBool('seen') ?? false);
 
-    if (_seen) {
+    if (seen) {
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => new Onboard()));
+          MaterialPageRoute(builder: (context) => const Onboard()));
     } else {
       await prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => new LogInScreen()));
+          MaterialPageRoute(builder: (context) => const LogInScreen()));
     }
   }
 
@@ -42,7 +42,7 @@ class _OnboardState extends State<Onboard> {
       const Duration(seconds: 2),
       () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => NavPage()),
+        MaterialPageRoute(builder: (context) => const NavPage()),
       ),
     );
     super.initState();
@@ -56,7 +56,7 @@ class _OnboardState extends State<Onboard> {
 
   @override
   Widget build(BuildContext context) {
-    int _pageIndex = 0;
+    int pageIndex = 0;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -78,7 +78,7 @@ class _OnboardState extends State<Onboard> {
                   itemCount: demoData.length,
                   onPageChanged: (index) {
                     setState(() {
-                      _pageIndex = index;
+                      pageIndex = index;
                     });
                   },
                   itemBuilder: (_, index) {
@@ -96,10 +96,10 @@ class _OnboardState extends State<Onboard> {
                     demoData.length,
                     (index) => Padding(
                       padding: const EdgeInsets.only(right: 4.0),
-                      child: Indicator(isActive: index == _pageIndex),
+                      child: Indicator(isActive: index == pageIndex),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   SizedBox(
                     height: 60,
                     width: 60,
@@ -114,8 +114,8 @@ class _OnboardState extends State<Onboard> {
                         //   MaterialPageRoute(builder: (context) => LogInPage()),
                         // );
                       },
-                      style: ElevatedButton.styleFrom(shape: CircleBorder()),
-                      child: Icon(
+                      style: ElevatedButton.styleFrom(shape: const CircleBorder()),
+                      child: const Icon(
                         Icons.arrow_forward_ios,
                         color: Colors.white,
                       ),
