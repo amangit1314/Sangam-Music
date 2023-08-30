@@ -1,4 +1,4 @@
-package com.example.sangam
+package com.example.sangam_music
 
 import io.flutter.embedding.android.FlutterActivity
 

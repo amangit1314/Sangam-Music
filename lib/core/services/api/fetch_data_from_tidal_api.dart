@@ -1,6 +1,8 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
-final String apiUrl = 'https://api.tidal.com/v1/tracks';
+const String apiUrl = 'https://api.tidal.com/v1/tracks';
 
 Future fetchTracks() async {
   final response = await http.get(Uri.parse(apiUrl), headers: {
@@ -8,7 +10,9 @@ Future fetchTracks() async {
     'content-type': 'application/json'
   });
 
-  // final jsonData = json.decode(response.body);
+  final jsonData = json.decode(response.body);
 
-  // final List tracks = jsonData['items'];
+  final List tracks = jsonData['items'];
+
+  return tracks;
 }

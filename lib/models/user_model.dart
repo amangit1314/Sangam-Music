@@ -1,13 +1,20 @@
 import 'dart:convert';
 
+import 'package:sangam_music/models/playlist_model.dart';
+import 'package:sangam_music/models/subscription_model.dart';
+import 'package:sangam_music/models/track_model.dart';
+
 class User {
   final String uid;
-  final String? userName;
   final String email;
+  final String? userName;
   final String? password;
   final String? userImage;
-  final List? playLists;
-  final dynamic subscription;
+  final List<PlayList>? playLists;
+  final List<Track>? recentlyPlayed;
+  final List<String>? followers;
+  final List<String>? following;
+  final Subscription? subscription;
 
   static User empty = const User(uid: '', email: '');
 
@@ -19,7 +26,10 @@ class User {
     this.password,
     this.userImage,
     this.playLists,
+    this.followers,
+    this.following,
     this.subscription,
+    this.recentlyPlayed,
     required this.uid,
     required this.email,
   });
@@ -31,7 +41,8 @@ class User {
       'email': email,
       'password': password,
       'userImage': userImage,
-      'playLists': playLists?.toMap(),
+      'playLists': playLists,
+      'recentlyPlayed': recentlyPlayed,
       'subscription': subscription,
     };
   }
@@ -43,9 +54,9 @@ class User {
       email: map['email'] ?? '',
       password: map['password'],
       userImage: map['userImage'],
-      playLists:
-          map['playLists'] != null ? List.fromMap(map['playLists']) : null,
-      subscription: map['subscription'] ?? null,
+      playLists: map['playLists'] ?? [],
+      recentlyPlayed: map['recentlyPlayed'] ?? [],
+      subscription: map['subscription'],
     );
   }
 

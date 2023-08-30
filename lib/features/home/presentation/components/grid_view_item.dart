@@ -12,28 +12,66 @@ class GridViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
-      width: MediaQuery.of(context).size.width * .2,
+      height: 60,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(18, 22, 64, 1.0).withOpacity(0.1),
-        borderRadius: BorderRadius.circular(10),
+        color: Theme.of(context).primaryColor.withOpacity(.05),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Theme.of(context).primaryColor.withOpacity(.01),
+          width: 1,
+        ),
       ),
       child: Row(
         children: [
           Container(
-            height: 70,
-            width: MediaQuery.of(context).size.width * 0.3,
-            child: Image.asset(imgUrl!, fit: BoxFit.cover),
-          ),
-          Container(
-            height: 70,
-            width: MediaQuery.of(context).size.width * 0.7,
-            child: Center(
-              child: Text(
-                text!,
-                overflow: TextOverflow.clip,
-                textAlign: TextAlign.start,
+            margin: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              // elevated look shadow of primary color with 30% opacity
+              boxShadow: [
+                BoxShadow(
+                  color: Theme.of(context).primaryColorDark.withOpacity(.3),
+                  blurRadius: 4,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+              image: DecorationImage(
+                image: AssetImage(imgUrl!),
+                fit: BoxFit.cover,
               ),
+            ),
+            height: 60,
+            width: 52,
+          ),
+          const SizedBox(width: 6),
+          SizedBox(
+            height: 50,
+            width: 94,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  text!,
+                  overflow: TextOverflow.clip,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColorDark.withOpacity(.6),
+                    fontWeight: FontWeight.normal,
+                    fontSize: 10,
+                  ),
+                ),
+                Text(
+                  text!,
+                  overflow: TextOverflow.clip,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColorDark,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
             ),
           )
         ],

@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:sangam/features/nav/nav_bar.dart';
-import 'package:sangam/models/user.dart' as model;
 
+import '../../../../features/nav/nav_bar.dart';
+import '../../../../models/user_model.dart' as model;
 import '../../../../features/auth/view/login/login_screen.dart';
 
 class AuthMethods {
@@ -12,12 +12,15 @@ class AuthMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<model.User> getUserDetails() async {
-    User currentUser = _auth.currentUser!;
+    User? currentUser = _auth.currentUser;
+    if (currentUser != null) {
+      DocumentSnapshot<Map<String, dynamic>> snap =
+          await _firestore.collection('users').doc(currentUser.uid).get();
 
-    final DocumentSnapshot snap =
-        await _firestore.collection('users').doc(currentUser.uid).get();
-
-    return model.User.fromSnap(snap);
+      return model.User.fromMap(snap.data()!);
+    } else {
+      throw Exception("User not authenticated.");
+    }
   }
 
   handleAuthState() {
@@ -27,48 +30,46 @@ class AuthMethods {
         if (snapshot.hasData) {
           return NavPage();
         } else {
-          return LogInScreen();
+          return const LogInScreen();
         }
       },
     );
   }
 
-  Future<String> signUpUser(
-      {required String email,
-      required String password,
-      required String username,
-      String bio = ''}) async {
-    String res = "Some error occured";
+  Future<String> signUpUser({
+    required String email,
+    required String password,
+    required String username,
+  }) async {
     try {
-      if (email.isNotEmpty || password.isNotEmpty || username.isNotEmpty) {
-        UserCredential cred = await _auth.createUserWithEmailAndPassword(
-            email: email, password: password);
+      UserCredential cred = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-        model.User user = model.User(
-          bio: bio,
-          email: email,
-          username: username,
-          uid: cred.user!.uid,
-          recentlyPlayed: [],
-          favourites: [],
-        );
+      model.User user = model.User(
+        email: email,
+        userName: username,
+        uid: cred.user!.uid,
+        recentlyPlayed: [],
+        playLists: [], // Initialize other lists accordingly
+        followers: [],
+        following: [],
+        subscription: null,
+      );
 
-        await _firestore
-            .collection('users')
-            .doc(cred.user!.uid)
-            .set(user.toJson());
-        res = 'success';
-      }
+      await _firestore
+          .collection('users')
+          .doc(cred.user!.uid)
+          .set(user.toMap()); // Use toMap() instead of toJson()
+
+      return 'success';
     } on FirebaseAuthException catch (err) {
-      if (err.code == 'invalid-email') {
-        res = '❗The email is badly formated...';
-      } else if (err.code == 'weak-password') {
-        res = 'Password should be 6 characters long...';
-      }
+      // Handle FirebaseAuthException
+      return err.message ?? 'Some error occurred';
     } catch (err) {
-      res = res.toString();
+      return err.toString();
     }
-    return res;
   }
 
   Future<String> loginUser({required email, required password}) async {

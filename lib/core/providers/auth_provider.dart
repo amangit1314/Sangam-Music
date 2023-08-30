@@ -3,18 +3,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../repositories/auth_repository.dart';
+import '../../features/auth/logic/repository/authentication_repository.dart';
 
 class AuthProvider with ChangeNotifier {
   User? _user;
 
-  final AuthRepository authRepository = AuthRepository();
+  final AuthenticationRepository authRepository = AuthenticationRepository();
 
   User get getUser => authRepository.user as User;
 
   Future<void> loginUser(
       {required String email, required String password}) async {
-    User user = (await authRepository.loginWithCredentials(
+    User user = (await authRepository.login(
       email: email,
       password: password,
     )) as User;
@@ -25,6 +25,7 @@ class AuthProvider with ChangeNotifier {
   Future<void> registerUser(
       {required String email, required String password, String? number}) async {
     User user = (await authRepository.register(
+      username: email.substring(0, 5),
       email: email,
       password: password,
     )) as User;

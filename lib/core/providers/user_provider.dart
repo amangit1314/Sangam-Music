@@ -1,15 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 
+import '../../features/auth/logic/repository/authentication_repository.dart';
 import '../../models/user_model.dart';
-import '../repositories/auth_repository.dart';
 import '../services/firebase/auth/auth_methods.dart';
 
 class UserProvider with ChangeNotifier {
   firebase_auth.User? _user;
 
   final AuthMethods _authMethods = AuthMethods();
-  final AuthRepository authRepository = AuthRepository();
+  final AuthenticationRepository authRepository = AuthenticationRepository();
 
   firebase_auth.User get getUser => _user!;
 

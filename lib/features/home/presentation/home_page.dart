@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:sangam/features/home/presentation/components/body.dart';
+import 'package:sangam_music/features/home/presentation/components/body.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   static String id = 'home_page';
-  @override
-  _HomePageState createState() => _HomePageState();
-}
 
-class _HomePageState extends State<HomePage> {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 26, 27, 32),
-      body: SafeArea(
+      resizeToAvoidBottomInset: true,
+      backgroundColor: Theme.of(context).canvasColor,
+      body: const SafeArea(
         child: HomeBody(),
       ),
     );
