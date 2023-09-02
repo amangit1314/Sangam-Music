@@ -6,6 +6,8 @@ import 'package:sangam_music/features/home/presentation/home_page.dart';
 import 'package:sangam_music/features/library/library_screen.dart';
 import 'package:sangam_music/features/search/presentation/search_page.dart';
 
+import '../../core/utils/theme/colors.dart';
+
 class NavPage extends StatefulWidget {
   const NavPage({super.key});
 
@@ -34,6 +36,7 @@ class _NavPageState extends State<NavPage> {
       body: _pages[_currentIndex],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: SangamMusicDefaultColors.popColor,
         onPressed: () {
           Navigator.push(
             context,
@@ -53,12 +56,13 @@ class _NavPageState extends State<NavPage> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
-        items: [
+        selectedItemColor: SangamMusicDefaultColors.popColor,
+        unselectedItemColor: SangamMusicDefaultColors.popColor.withOpacity(.3),
+        items: const [
           BottomNavigationBarItem(
             icon: FaIcon(
               FontAwesomeIcons.music,
               size: 18,
-              color: Theme.of(context).primaryColor,
             ),
             label: 'Music',
           ),
@@ -66,7 +70,6 @@ class _NavPageState extends State<NavPage> {
             icon: FaIcon(
               FontAwesomeIcons.layerGroup,
               size: 18,
-              color: Theme.of(context).primaryColor,
             ),
             label: 'Library',
           ),

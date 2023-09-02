@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -7,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sangam_music/features/home/data/data.dart';
 import 'package:sangam_music/features/profile/presentation/profile_page.dart';
 
+import '../../../../core/utils/theme/colors.dart';
 import '../../../music/playlist/details/playlist_detail_screen.dart';
 import 'grid_view_item.dart';
 
@@ -23,24 +22,20 @@ class _HomeBodyState extends State<HomeBody> {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 12.0),
       child: SingleChildScrollView(
-        child: SizedBox(
-          height: double.maxFinite,
-          width: double.infinity,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HomeTopSection(),
-              SizedBox(height: 20),
-              RecentlyPlayedSection(),
-              SizedBox(height: 20),
-              TrendingNowSection(),
-              SizedBox(height: 20),
-              MostPopular(),
-              SizedBox(height: 20),
-              SongsOfTheWeek(),
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HomeTopSection(),
+            SizedBox(height: 20),
+            RecentlyPlayedSection(),
+            SizedBox(height: 20),
+            TrendingNowSection(),
+            SizedBox(height: 20),
+            MostPopular(),
+            SizedBox(height: 20),
+            SongsOfTheWeek(),
+          ],
         ),
       ),
     );
@@ -60,19 +55,17 @@ class MostPopular extends StatelessWidget {
           children: [
             Text(
               'Most Popular',
-              style: TextStyle(
-                fontSize: 16,
-                color: Theme.of(context).primaryColorDark,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
             ),
             Text(
               'See all',
-              style: TextStyle(
-                fontSize: 12,
-                color: Theme.of(context).primaryColorDark.withOpacity(.6),
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .displaySmall!
+                  .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -112,19 +105,17 @@ class TrendingNowSection extends StatelessWidget {
           children: [
             Text(
               'Trending Now',
-              style: TextStyle(
-                fontSize: 16,
-                color: Theme.of(context).primaryColorDark,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
             ),
             Text(
               'See all',
-              style: TextStyle(
-                fontSize: 12,
-                color: Theme.of(context).primaryColorDark.withOpacity(.6),
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .displaySmall!
+                  .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -196,10 +187,9 @@ class HomeTopSection extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         margin: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          shape: BoxShape.circle,
+                          borderRadius: BorderRadius.circular(24),
                           color:
                               Theme.of(context).primaryColor.withOpacity(.02),
-                          // image decoration image
                           image: const DecorationImage(
                             image: AssetImage('assets/images/img_10.jpg'),
                           ),
@@ -209,11 +199,8 @@ class HomeTopSection extends StatelessWidget {
                     const SizedBox(width: 4),
                     Text(
                       'Hi, Aman',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Theme.of(context).primaryColorDark,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontSize: 16, fontWeight: FontWeight.normal),
                     ),
                   ],
                 ),
@@ -231,7 +218,6 @@ class HomeTopSection extends StatelessWidget {
                         );
                       },
                     ),
-                    // const SizedBox(width: 15),
                     HomeAppBarIconWidget(
                       onTap: () {
                         Navigator.push(
@@ -245,7 +231,6 @@ class HomeTopSection extends StatelessWidget {
                       },
                       iconData: FontAwesomeIcons.timeline,
                     ),
-                    // const SizedBox(width: 15),
                     HomeAppBarIconWidget(
                       onTap: () {},
                       iconData: FontAwesomeIcons.gear,
@@ -271,11 +256,10 @@ class RecentlyPlayedSection extends StatelessWidget {
       children: [
         Text(
           'Recently Played',
-          style: TextStyle(
-            fontSize: 16,
-            color: Theme.of(context).primaryColorDark,
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium!
+              .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
         ),
         const SizedBox(height: 10),
         Column(
@@ -338,7 +322,6 @@ class HomeAppBarIconWidget extends StatelessWidget {
         child: Center(
           child: FaIcon(
             iconData ?? FontAwesomeIcons.bell,
-            // color: Theme.of(context).primaryColor,
             color: Colors.grey.shade900,
             size: size ?? 16,
           ),
@@ -374,8 +357,6 @@ class TrendingNowWidget extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(imgUrl!),
-                // image: (imgUrl != null) ? AssetImage(imgUrl!) : NetworkImage(
-                //     'https://images.unsplash.com/photo-1621574539437-4b7b2b5b4b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvd3RocHV0dGVkJTIwYmVhY2h8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(18),
@@ -398,18 +379,19 @@ class TrendingNowWidget extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             text ?? 'Lift me up',
-            style: TextStyle(
-              fontSize: 12,
-              color: Theme.of(context).primaryColorDark,
-              fontWeight: FontWeight.bold,
-            ),
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
           ),
           Text(
             subText ?? 'Rihanna',
-            style: TextStyle(
-              fontSize: 10,
-              color: Theme.of(context).primaryColorDark.withOpacity(.6),
-            ),
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context)
+                .textTheme
+                .displaySmall!
+                .copyWith(fontSize: 10, fontWeight: FontWeight.normal),
           ),
         ],
       ),
@@ -438,19 +420,17 @@ class SongsOfTheWeek extends StatelessWidget {
           children: [
             Text(
               'Songs of the week',
-              style: TextStyle(
-                fontSize: 16,
-                color: Theme.of(context).primaryColorDark,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
             ),
             Text(
               'See all',
-              style: TextStyle(
-                fontSize: 12,
-                color: Theme.of(context).primaryColorDark.withOpacity(.6),
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .displaySmall!
+                  .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -514,43 +494,40 @@ class SongOfTheWeekWidget extends StatelessWidget {
               children: [
                 Text(
                   'Lift me up',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Theme.of(context).primaryColorDark,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall!
+                      .copyWith(fontSize: 12, fontWeight: FontWeight.normal),
                 ),
                 Text(
                   'Rihanna',
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Theme.of(context).primaryColorDark.withOpacity(.6),
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(fontSize: 10, fontWeight: FontWeight.normal),
                 ),
               ],
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              // Container(
-              //   padding: const EdgeInsets.all(8),
-              //   margin: const EdgeInsets.all(8),
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(16),
-              //     color: Theme.of(context).primaryColor.withOpacity(.1),
-              //   ),
-              //   child: Text(
-              //     '+20%',
-              //     style: TextStyle(
-              //       fontSize: 8,
-              //       color: Theme.of(context).primaryColorDark,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
-
-              //circle avatar play icon
+              Container(
+                padding: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Theme.of(context).primaryColor.withOpacity(.1),
+                ),
+                child: Text(
+                  '+20%',
+                  style: TextStyle(
+                    fontSize: 8,
+                    color: Theme.of(context).primaryColorDark,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               Container(
                 height: 40,
                 width: 40,

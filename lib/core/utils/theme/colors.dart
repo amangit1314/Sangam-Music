@@ -4,53 +4,67 @@ import 'package:sangam_music/core/utils/theme/text_theme.dart';
 class SangamMusicAppColorTheme {
   SangamMusicAppColorTheme._();
   static ThemeData lightTheme = ThemeData(
-    primarySwatch: Colors.deepPurple,
-    primaryColorDark: SangamMusicDefaultColors.primaryColor,
-    primaryColorLight: SangamMusicDefaultColors.primaryLightColor,
-    disabledColor: const Color(0xffFF9B85),
-    unselectedWidgetColor: SangamMusicDefaultColors.textColor,
-    shadowColor: const Color(0xffacacac),
-    hintColor: Colors.white60,
-    canvasColor: Colors.white,
     brightness: Brightness.light,
+    appBarTheme: const AppBarTheme(),
+    primarySwatch: Colors.deepPurple,
+    hintColor: SangamMusicDefaultColors.lightHintColor,
     textTheme: SangamMusicAppTextTheme.lightTextTheme,
-    appBarTheme: const AppBarTheme(),
+    primaryColorDark: SangamMusicDefaultColors.primaryColor,
+    canvasColor: SangamMusicDefaultColors.lightBackgroundColor,
+    primaryColorLight: SangamMusicDefaultColors.primaryLightColor,
+    unselectedWidgetColor: SangamMusicDefaultColors.unselectedColor,
+    iconTheme: IconThemeData(color: SangamMusicDefaultColors.lightHeadingColor),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(),
-    ),
   );
+
   static ThemeData darkTheme = ThemeData(
-    primarySwatch: Colors.deepOrange,
-    primaryColorDark: Colors.deepOrange,
-    primaryColorLight: const Color(0xFFFBC386),
-    disabledColor: const Color(0xffFF9B85),
-    unselectedWidgetColor: const Color(0xFF20454E),
-    shadowColor: const Color(0xffC4C4C4),
-    hintColor: Colors.white60,
     brightness: Brightness.dark,
-    textTheme: SangamMusicAppTextTheme.darkTextTheme,
     appBarTheme: const AppBarTheme(),
-    canvasColor: Colors.grey.shade900,
+    primarySwatch: Colors.deepPurple,
+    hintColor: SangamMusicDefaultColors.darkHintColor,
+    textTheme: SangamMusicAppTextTheme.darkTextTheme,
+    primaryColorDark: SangamMusicDefaultColors.popColor,
+    canvasColor: SangamMusicDefaultColors.darkBackgroundColor,
+    primaryColorLight: SangamMusicDefaultColors.primaryLightColor,
+    unselectedWidgetColor: SangamMusicDefaultColors.unselectedColor,
+    iconTheme: IconThemeData(color: SangamMusicDefaultColors.darkHeadingColor),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(),
-    ),
   );
 }
 
 class SangamMusicDefaultColors {
+  // default colors hard coded
+  static Color blackColor = Colors.black;
+  static Color greyColor = Colors.grey;
+  static Color whiteColor = Colors.white;
+
+  // * main colors
+  static Color popColor = const Color.fromARGB(255, 77, 226, 246);
   static Color primaryColor = const Color.fromRGBO(18, 22, 64, 1.0);
   static Color primaryLightColor = const Color.fromARGB(255, 182, 169, 238);
-  Color headingColor = Colors.grey.shade900;
-  static Color textColor = Colors.white24;
-  static Color blackColor = const Color(0xFF000000);
-  static Color whiteColor = const Color(0xFFFFFFFF);
-  static Color greyColor = Colors.white38;
 
-  static LinearGradient primaryGradientColor = const LinearGradient(
+  // light theme text colors
+  static Color lightHeadingColor = Colors.grey.shade900;
+  static Color lightTextColor = Colors.grey.shade600;
+  static Color lightHintColor = Colors.grey.shade400;
+
+  // dark theme text colors
+  static Color darkHeadingColor = whiteColor.withOpacity(0.87);
+  static Color darkTextColor = whiteColor.withOpacity(0.60);
+  static Color darkHintColor = whiteColor.withOpacity(0.38);
+
+  // ? selection colors
+  static Color selectedColor = popColor;
+  static Color unselectedColor = primaryColor.withOpacity(.3);
+
+  // * app background colors
+  static Color lightBackgroundColor = whiteColor;
+  static Color darkBackgroundColor = SangamMusicDefaultColors.lightHeadingColor;
+
+  // gradient colors
+  static LinearGradient primaryGradientColor = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [Color.fromRGBO(18, 22, 64, 1.0), Colors.black],
+    colors: [SangamMusicDefaultColors.primaryColor, blackColor],
   );
 }

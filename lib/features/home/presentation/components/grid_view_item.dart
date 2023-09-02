@@ -27,7 +27,6 @@ class GridViewItem extends StatelessWidget {
             margin: const EdgeInsets.all(4),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              // elevated look shadow of primary color with 30% opacity
               boxShadow: [
                 BoxShadow(
                   color: Theme.of(context).primaryColorDark.withOpacity(.3),
@@ -55,21 +54,19 @@ class GridViewItem extends StatelessWidget {
                   text!,
                   overflow: TextOverflow.clip,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColorDark.withOpacity(.6),
-                    fontWeight: FontWeight.normal,
-                    fontSize: 10,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall!
+                      .copyWith(fontSize: 10, fontWeight: FontWeight.normal),
                 ),
                 Text(
                   text!,
                   overflow: TextOverflow.clip,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColorDark,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
                 ),
               ],
             ),

@@ -25,7 +25,6 @@ class TextFieldInput extends StatelessWidget {
     this.iconColor,
     this.contentPadding = const EdgeInsets.all(8),
     this.onPressed,
-    //required this.border,
   }) : super(key: key);
 
   @override
@@ -36,13 +35,23 @@ class TextFieldInput extends StatelessWidget {
         width: 1,
         color: Colors.white,
       ),
-      borderRadius: BorderRadius.circular(36.0),
+      borderRadius: BorderRadius.circular(8.0),
+    );
+
+    final focusedBorder = OutlineInputBorder(
+      borderSide: Divider.createBorderSide(
+        context,
+        width: 1,
+        color: const Color.fromARGB(255, 77, 226, 246),
+      ),
+      borderRadius: BorderRadius.circular(8.0),
     );
 
     return TextField(
       style: GoogleFonts.poppins(
         textStyle: const TextStyle(
           color: Colors.white,
+          fontSize: 14,
         ),
       ),
       controller: textEditingController,
@@ -60,8 +69,8 @@ class TextFieldInput extends StatelessWidget {
         hintStyle: GoogleFonts.poppins(
           textStyle: const TextStyle(
             color: Colors.white54,
-            fontSize: 13.0,
-            fontWeight: FontWeight.w500,
+            fontSize: 14.0,
+            fontWeight: FontWeight.normal,
           ),
         ),
         suffixIcon: Padding(
@@ -76,7 +85,7 @@ class TextFieldInput extends StatelessWidget {
         ),
         hintText: hintText,
         border: inputBorder,
-        focusedBorder: inputBorder,
+        focusedBorder: focusedBorder,
         enabledBorder: inputBorder,
         filled: true,
         contentPadding: contentPadding,

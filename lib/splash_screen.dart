@@ -1,15 +1,14 @@
 import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sangam_music/core/utils/theme/colors.dart';
 import 'package:sangam_music/features/auth/logic/bloc/auth_bloc.dart';
 import 'package:sangam_music/features/nav/nav_bar.dart';
 import 'package:sangam_music/features/onboard/presentation/onboard.dart';
 
 import 'core/config/size_configs.dart';
 import 'core/helper/shared_preference_helper.dart';
-import 'core/utils/theme/cubit/theme_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -20,6 +19,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   bool isDarkMode = false;
+
   @override
   void initState() {
     super.initState();
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<bool> isUserLoggedIn() async {
     final accessToken = await SharedPrefrenceHelper().getAccessToken();
     log(accessToken.toString());
-    return accessToken != null && accessToken.isNotEmpty;
+    return accessToken != null && accessToken.isNotEmpty && accessToken != '';
   }
 
   Future<void> checkUserLoggedIn() async {
@@ -47,15 +47,13 @@ class _SplashScreenState extends State<SplashScreen> {
     final accessToken = await SharedPrefrenceHelper().getAccessToken();
     if (!mounted) return;
     final authBloc = BlocProvider.of<AuthBloc>(context);
-    accessToken != null && accessToken.isNotEmpty
+    accessToken != null && accessToken.isNotEmpty && accessToken != ''
         ? Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (_) => const NavPage()),
             (route) => false,
           )
         : authBloc.add(AuthLoggedOut());
   }
-
-  Future<void> checkWhereToNavigate() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -75,22 +73,14 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: Theme.of(context).primaryColor,
-        body: SafeArea(
+        backgroundColor: SangamMusicDefaultColors.primaryColor,
+        body: const SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Image(
+              Image(
                 image: AssetImage('assets/images/Sangam.png'),
                 fit: BoxFit.cover,
-              ),
-              // ios switch button to toggle theme
-              CupertinoSwitch(
-                value: isDarkMode,
-                onChanged: (value) {
-                  isDarkMode = !isDarkMode;
-                  context.read<ThemeCubit>().toggleTheme();
-                },
               ),
             ],
           ),

@@ -12,33 +12,33 @@ class OnboardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: double.infinity,
-      width: double.maxFinite,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Spacer(),
-          Lottie.network(lottieAsset, height: 300),
-          const Spacer(),
-          Text(
-            text,
-            textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall!
-                .copyWith(fontWeight: FontWeight.w500, color: Colors.white),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            description,
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.white),
-          ),
-          const Spacer(),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Spacer(),
+        Lottie.network(lottieAsset, height: 300),
+        const Spacer(),
+        Text(
+          text,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 20,
+              ),
+        ),
+        const SizedBox(height: 16),
+        Text(
+          description,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                color: Colors.white,
+                fontSize: 14,
+              ),
+        ),
+        const Spacer(),
+      ],
     );
   }
 }

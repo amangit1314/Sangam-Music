@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sangam_music/features/auth/view/login/login_screen.dart';
-import 'package:sangam_music/features/nav/nav_bar.dart';
 import 'package:sangam_music/features/onboard/presentation/indicator.dart';
 import 'package:sangam_music/features/onboard/presentation/onboard_content.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,11 +20,12 @@ class _OnboardState extends State<Onboard> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool seen = (prefs.getBool('seen') ?? false);
 
-    if (seen) {
+    if (seen && mounted) {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const Onboard()));
     } else {
       await prefs.setBool('seen', true);
+      if (!mounted) return;
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const LogInScreen()));
     }
@@ -38,13 +38,6 @@ class _OnboardState extends State<Onboard> {
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const NavPage()),
-      ),
-    );
     super.initState();
   }
 
@@ -95,26 +88,28 @@ class _OnboardState extends State<Onboard> {
                   ...List.generate(
                     demoData.length,
                     (index) => Padding(
-                      padding: const EdgeInsets.only(right: 4.0),
+                      padding: const EdgeInsets.only(right: 8.0),
                       child: Indicator(isActive: index == pageIndex),
                     ),
                   ),
                   const Spacer(),
-                  SizedBox(
-                    height: 60,
-                    width: 60,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // _pageController.nextPage(
-                        //   duration: const Duration(milliseconds: 200),
-                        //   curve: Curves.ease,
-                        // );
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => LogInPage()),
-                        // );
+                  CircleAvatar(
+                    radius: 28,
+                    child: InkWell(
+                      onTap: () {
+                        if (_pageController.page != demoData.length - 1) {
+                          _pageController.nextPage(
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.ease,
+                          );
+                        } else {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const LogInScreen(),
+                            ),
+                          );
+                        }
                       },
-                      style: ElevatedButton.styleFrom(shape: const CircleBorder()),
                       child: const Icon(
                         Icons.arrow_forward_ios,
                         color: Colors.white,

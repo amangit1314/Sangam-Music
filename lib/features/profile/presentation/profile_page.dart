@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../core/utils/theme/cubit/theme_cubit.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
   static String id = 'profile_page';
+
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = false;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -13,12 +19,21 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(height: 4),
             // row back ios icon
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                   icon: const Icon(Icons.arrow_back_ios),
+                ),
+                // ios switch button to toggle theme
+                CupertinoSwitch(
+                  value: isDarkMode,
+                  onChanged: (value) {
+                    isDarkMode = !isDarkMode;
+                    context.read<ThemeCubit>().toggleTheme();
+                  },
                 ),
               ],
             ),

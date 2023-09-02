@@ -74,14 +74,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             .login(email: event.email, password: event.password)
             .then(
           (value) {
-            if (value.isNotEmpty && value == '200') {
+            if (value.isNotEmpty) {
               emit(AuthSuccessful(value));
               log('successfully authenticated 😁, StatusCode: $value');
-            } else if (value.isNotEmpty && value == '403') {
-              emit(AuthError(
-                  'You are not allowed to login, because your email is not verified'));
-              log('you are not allowed to login, because your email is not verified');
             }
+            // else if (value.isNotEmpty) {
+            //   emit(AuthError(
+            //       'You are not allowed to login, because your email is not verified'));
+            //   log('you are not allowed to login, because your email is not verified');
+            // }
           },
         ).catchError(
           (err) {

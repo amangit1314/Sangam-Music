@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../../../../core/utils/theme/colors.dart';
 import '../../../../../core/widgets/content/text_field_input.dart';
 import '../../../../nav/nav_bar.dart';
 import '../../../logic/bloc/auth_bloc.dart';
+import '../../login/login_screen.dart';
 
 class RegisterationForm extends StatefulWidget {
   const RegisterationForm({super.key});
@@ -16,6 +19,7 @@ class _RegisterationFormState extends State<RegisterationForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool isPasswordVisible = false;
 
   @override
   void dispose() {
@@ -72,31 +76,34 @@ class _RegisterationFormState extends State<RegisterationForm> {
                 iconColor: Colors.white,
                 contentPadding: const EdgeInsets.all(16.0),
                 textEditingController: _passwordController,
-                isPass: true,
+                isPass: isPasswordVisible ? false : true,
+                sufixIcon:
+                    isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+                onPressed: () =>
+                    setState(() => isPasswordVisible = !isPasswordVisible),
               ),
               SizedBox(height: MediaQuery.of(context).size.height / 35),
               Container(
-                width: MediaQuery.of(context).size.width / 1.4,
-                height: 55,
+                width: MediaQuery.of(context).size.width,
+                height: 56,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(36.0),
+                  borderRadius: BorderRadius.circular(8.0),
                   border: Border.all(color: Colors.white),
-                  color: const Color.fromRGBO(18, 22, 64, 1.0),
+                  color: const Color.fromARGB(255, 77, 226, 246),
+                  // color: const Color.fromRGBO(18, 22, 64, 1.0),
                 ),
                 child: MaterialButton(
-                  onPressed: state is AuthLoading
-                      ? null
-                      : () {
-                          if (state is! AuthLoading) {
-                            signUpUser(context.read<AuthBloc>());
-                          }
-                        },
-                  child: const Text(
-                    'Sign Up',
+                  onPressed: () {
+                    if (state is! AuthLoading) {
+                      signUpUser(context.read<AuthBloc>());
+                    }
+                  },
+                  child: Text(
+                    'Register',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+                      color: SangamMusicDefaultColors.primaryColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

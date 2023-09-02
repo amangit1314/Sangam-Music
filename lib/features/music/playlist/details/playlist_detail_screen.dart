@@ -13,17 +13,24 @@ class PlayListDetailScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
-            color: Theme.of(context).primaryColorDark,
+            // color: Theme.of(context).primaryColorDark,
           ),
           onPressed: () => Navigator.pop(context),
         ),
+        title: Text(
+          'Playlist Name',
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall!
+              .copyWith(fontSize: 14, fontWeight: FontWeight.bold),
+        ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.more_vert,
-              color: Theme.of(context).primaryColorDark,
+              // color: Theme.of(context).primaryColorDark,
             ),
             onPressed: () {},
           ),
@@ -42,28 +49,29 @@ class PlayListDetailScreen extends StatelessWidget {
                   Flexible(
                     child: Container(
                       margin: const EdgeInsets.only(right: 10),
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.only(right: 2),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor.withOpacity(.05),
+                        color:
+                            Theme.of(context).primaryColorDark.withOpacity(.05),
                       ),
                       child: TextField(
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.search,
-                            color: Theme.of(context).primaryColorDark,
+                            // color: Theme.of(context).primaryColorDark,
                           ),
                           hintText: 'Find in playlist',
-                          hintStyle: TextStyle(
-                            fontSize: 12,
-                            color: Theme.of(context).primaryColorDark,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          hintStyle: Theme.of(context)
+                              .textTheme
+                              .displaySmall!
+                              .copyWith(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
                           suffixIcon: Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: Theme.of(context)
-                                  .primaryColor
+                                  .primaryColorDark
                                   .withOpacity(.8),
                             ),
                             child: const Text(
@@ -110,11 +118,12 @@ class PlayListDetailScreen extends StatelessWidget {
                           TextSpan(
                             text: 'By ',
                             style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                fontSize: 12,
-                                color: Theme.of(context).primaryColorDark,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
                             ),
                           ),
                           TextSpan(
@@ -122,12 +131,15 @@ class PlayListDetailScreen extends StatelessWidget {
                             // decoration underline
 
                             style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                fontSize: 12,
-                                decoration: TextDecoration.underline,
-                                color: Theme.of(context).primaryColorDark,
-                                fontWeight: FontWeight.normal,
-                              ),
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .displaySmall!
+                                  .copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.5,
+                                    decoration: TextDecoration.underline,
+                                  ),
                             ),
                           ),
                         ],
@@ -149,25 +161,23 @@ class PlayListDetailScreen extends StatelessWidget {
                                 TextSpan(
                                   text: '1,000,000',
                                   style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Theme.of(context)
-                                          .primaryColorDark
-                                          .withOpacity(.5),
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 TextSpan(
                                   text: ' likes',
                                   style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Theme.of(context)
-                                          .primaryColorDark
-                                          .withOpacity(.8),
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .displaySmall!
+                                        .copyWith(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ],
@@ -181,11 +191,12 @@ class PlayListDetailScreen extends StatelessWidget {
                               Text(
                                 'Duration: ',
                                 style: GoogleFonts.poppins(
-                                  textStyle: TextStyle(
-                                    fontSize: 12,
-                                    color: Theme.of(context).primaryColorDark,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .copyWith(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
                                 ),
                               ),
 
@@ -195,25 +206,23 @@ class PlayListDetailScreen extends StatelessWidget {
                                     TextSpan(
                                       text: '10',
                                       style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                          fontSize: 12,
-                                          color: Theme.of(context)
-                                              .primaryColorDark
-                                              .withOpacity(.5),
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .displaySmall!
+                                            .copyWith(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                     TextSpan(
                                       text: ' hr',
                                       style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                          fontSize: 12,
-                                          color: Theme.of(context)
-                                              .primaryColorDark
-                                              .withOpacity(.8),
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .displaySmall!
+                                            .copyWith(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                   ],
@@ -226,25 +235,23 @@ class PlayListDetailScreen extends StatelessWidget {
                                     TextSpan(
                                       text: '1',
                                       style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                          fontSize: 12,
-                                          color: Theme.of(context)
-                                              .primaryColorDark
-                                              .withOpacity(.5),
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .displaySmall!
+                                            .copyWith(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                     TextSpan(
                                       text: ' min',
                                       style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                          fontSize: 12,
-                                          color: Theme.of(context)
-                                              .primaryColorDark
-                                              .withOpacity(.8),
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .displaySmall!
+                                            .copyWith(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                   ],
@@ -269,8 +276,9 @@ class PlayListDetailScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           CircleAvatar(
-                            backgroundColor:
-                                Theme.of(context).primaryColor.withOpacity(.3),
+                            backgroundColor: Theme.of(context)
+                                .primaryColorDark
+                                .withOpacity(.3),
                             child: IconButton(
                               icon: Icon(
                                 Icons.play_arrow,
@@ -349,19 +357,16 @@ class PlaylistTracksListWidget extends StatelessWidget {
                     children: [
                       Text(
                         title ?? 'Title',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Theme.of(context).primaryColorDark,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         subtitle ?? 'Subtite',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Theme.of(context).primaryColorDark,
-                          fontWeight: FontWeight.normal,
-                        ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontSize: 12, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -371,17 +376,17 @@ class PlaylistTracksListWidget extends StatelessWidget {
             Row(
               children: [
                 GestureDetector(
-                  child: Icon(
+                  child: const Icon(
                     Icons.favorite_border,
-                    color: Theme.of(context).primaryColorDark,
+                    // color: Theme.of(context).primaryColorDark,
                   ),
                   onTap: () {},
                 ),
                 const SizedBox(width: 8),
                 GestureDetector(
-                  child: Icon(
+                  child: const Icon(
                     Icons.more_vert,
-                    color: Theme.of(context).primaryColorDark,
+                    // color: Theme.of(context).primaryColorDark,
                   ),
                   onTap: () {},
                 ),
