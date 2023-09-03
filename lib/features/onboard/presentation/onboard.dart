@@ -15,6 +15,7 @@ class Onboard extends StatefulWidget {
 
 class _OnboardState extends State<Onboard> {
   late PageController _pageController;
+  int pageIndex = 0;
 
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -49,7 +50,6 @@ class _OnboardState extends State<Onboard> {
 
   @override
   Widget build(BuildContext context) {
-    int pageIndex = 0;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -88,8 +88,8 @@ class _OnboardState extends State<Onboard> {
                   ...List.generate(
                     demoData.length,
                     (index) => Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: Indicator(isActive: index == pageIndex),
+                      padding: const EdgeInsets.only(right: 6.0),
+                      child: buildIndicator(index, context),
                     ),
                   ),
                   const Spacer(),
@@ -122,6 +122,20 @@ class _OnboardState extends State<Onboard> {
           ),
         ),
       ),
+    );
+  }
+
+  buildIndicator(int index, BuildContext context) {
+    return AnimatedContainer(
+      height: pageIndex == index ? 15 : 4,
+      width: 4,
+      decoration: BoxDecoration(
+        color: pageIndex == index
+            ? Colors.deepPurpleAccent
+            : Colors.deepPurpleAccent.withOpacity(0.2),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+      ),
+      duration: const Duration(milliseconds: 300),
     );
   }
 }
