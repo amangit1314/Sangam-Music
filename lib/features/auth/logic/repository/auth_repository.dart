@@ -24,7 +24,7 @@ class AuthRepository implements BaseAuthRepository {
       );
       _firebaseFireStore
           .collection('users')
-          .doc()
+          .doc(cred.user!.uid)
           .set(user.User(uid: cred.user!.uid, email: email).toMap());
       log('Successfully registered 😁');
       return cred.user!.uid;

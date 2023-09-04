@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sangam_music/features/home/data/data.dart';
 import 'package:sangam_music/features/profile/presentation/profile_page.dart';
 
-import '../../../../core/utils/theme/colors.dart';
 import '../../../music/playlist/details/playlist_detail_screen.dart';
 import 'grid_view_item.dart';
 

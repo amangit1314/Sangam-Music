@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/utils/theme/colors.dart';
 import '../../../../../core/widgets/content/text_field_input.dart';
 import '../../../../nav/nav_bar.dart';
 import '../../../logic/bloc/auth_bloc.dart';
-import '../../login/login_screen.dart';
 
 class RegisterationForm extends StatefulWidget {
   const RegisterationForm({super.key});

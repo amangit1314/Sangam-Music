@@ -76,7 +76,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (value) {
             if (value.isNotEmpty) {
               emit(AuthSuccessful(value));
-              log('successfully authenticated 😁, StatusCode: $value');
+              log('successfully authenticated 😁, Uid: $value');
             }
             // else if (value.isNotEmpty) {
             //   emit(AuthError(

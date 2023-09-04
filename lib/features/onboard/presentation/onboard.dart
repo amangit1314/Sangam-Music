@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sangam_music/features/auth/view/login/login_screen.dart';
-import 'package:sangam_music/features/onboard/presentation/indicator.dart';
 import 'package:sangam_music/features/onboard/presentation/onboard_content.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

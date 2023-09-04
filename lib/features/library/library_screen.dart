@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sangam_music/features/music/playlist/search/search_in_playlists.dart';
 import 'package:sangam_music/features/profile/presentation/profile_page.dart';
+
+import '../home/data/data.dart';
+import '../music/playlist/create_delete/create_playlist.dart';
 
 class LibraryScreen extends StatelessWidget {
   const LibraryScreen({super.key});
@@ -19,7 +24,6 @@ class LibraryScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // navigate to profile screen
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (_) => const ProfilePage(),
@@ -48,19 +52,30 @@ class LibraryScreen extends StatelessWidget {
                   Row(
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  const SearchInPlaylistsAndFavouitesScreen(),
+                            ),
+                          );
+                        },
                         icon: const Icon(Icons.search, size: 20),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const CreatePlaylistScreen(),
+                            ),
+                          );
+                        },
                         icon: const Icon(Icons.add, size: 20),
                       ),
                     ],
                   ),
                 ],
               ),
-
-              // row sort icon, Recents text, grid view icon
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -68,7 +83,7 @@ class LibraryScreen extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: const Icon(Icons.sort, size: 20),
+                        icon: const FaIcon(FontAwesomeIcons.sort, size: 20),
                       ),
                       const SizedBox(width: 12),
                       Text(
@@ -87,54 +102,15 @@ class LibraryScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
-              // expanded list view.builder
               Expanded(
                 child: ListView.separated(
                   padding: const EdgeInsets.all(12),
-                  itemCount: 10,
+                  itemCount: songs.length,
                   separatorBuilder: (context, index) {
-                    return const SizedBox(height: 12);
+                    return const SizedBox(height: 15);
                   },
                   itemBuilder: (context, index) {
-                    return Row(
-                      children: [
-                        Container(
-                          height: 50,
-                          width: 50,
-                          // decoration image
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                'assets/images/img_10.jpg',
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        // song name, artist name
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Song Name',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).primaryColorDark,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              'Artist Name',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Theme.of(context).primaryColorDark,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    );
+                    return const LibraryPlaylistWidget();
                   },
                 ),
               ),
@@ -142,6 +118,60 @@ class LibraryScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class LibraryPlaylistWidget extends StatelessWidget {
+  final String playlistName;
+  final String playlistCreatorName;
+  final String? playlistBanner;
+
+  const LibraryPlaylistWidget({
+    super.key,
+    this.playlistName = 'Playlist',
+    this.playlistCreatorName = 'Playlist . Magic Records',
+    this.playlistBanner,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            image: const DecorationImage(
+              image: AssetImage(
+                'assets/images/img_10.jpg',
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 12),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              playlistName,
+              style: TextStyle(
+                fontSize: 14,
+                color: Theme.of(context).primaryColorDark,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              playlistCreatorName,
+              style: TextStyle(
+                fontSize: 12,
+                color: Theme.of(context).primaryColorDark,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

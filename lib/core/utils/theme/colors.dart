@@ -23,7 +23,7 @@ class SangamMusicAppColorTheme {
     primarySwatch: Colors.deepPurple,
     hintColor: SangamMusicDefaultColors.darkHintColor,
     textTheme: SangamMusicAppTextTheme.darkTextTheme,
-    primaryColorDark: SangamMusicDefaultColors.popColor,
+    primaryColorDark: SangamMusicDefaultColors.primaryColor,
     canvasColor: SangamMusicDefaultColors.darkBackgroundColor,
     primaryColorLight: SangamMusicDefaultColors.primaryLightColor,
     unselectedWidgetColor: SangamMusicDefaultColors.unselectedColor,

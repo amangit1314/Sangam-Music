@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:sangam_music/features/onboard/presentation/onboard.dart';
 import 'core/utils/theme/colors.dart';
 import 'core/utils/theme/cubit/theme_cubit.dart';
 import 'features/auth/logic/bloc/auth_bloc.dart';
