@@ -31,6 +31,7 @@ dependencies:
   injectable: ^2.3.0
   lottie: any
   package_info: ^2.0.2
+  permission_handler: ^10.4.3
   provider: any
   shared_preferences: any
 

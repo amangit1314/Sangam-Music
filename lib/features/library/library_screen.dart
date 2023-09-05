@@ -55,8 +55,7 @@ class LibraryScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (_) =>
-                                  const SearchInPlaylistsAndFavouitesScreen(),
+                              builder: (_) => const SearchInPlaylistsAndFavouitesScreen(),
                             ),
                           );
                         },
@@ -139,10 +138,10 @@ class LibraryPlaylistWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-          height: 50,
-          width: 50,
+          height: 70,
+          width: 70,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(4),
             image: const DecorationImage(
               image: AssetImage(
                 'assets/images/img_10.jpg',

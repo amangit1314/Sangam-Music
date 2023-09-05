@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sangam_music/features/home/data/data.dart';
 import 'package:sangam_music/features/profile/presentation/profile_page.dart';
+import 'package:sangam_music/features/settings/settings.dart';
 
 import '../../../music/playlist/details/playlist_detail_screen.dart';
 import 'grid_view_item.dart';
@@ -54,17 +55,11 @@ class MostPopular extends StatelessWidget {
           children: [
             Text(
               'Most Popular',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, fontWeight: FontWeight.normal),
             ),
             Text(
               'See all',
-              style: Theme.of(context)
-                  .textTheme
-                  .displaySmall!
-                  .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 12, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -104,17 +99,11 @@ class TrendingNowSection extends StatelessWidget {
           children: [
             Text(
               'Trending Now',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, fontWeight: FontWeight.normal),
             ),
             Text(
               'See all',
-              style: Theme.of(context)
-                  .textTheme
-                  .displaySmall!
-                  .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 12, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -187,8 +176,7 @@ class HomeTopSection extends StatelessWidget {
                         margin: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(24),
-                          color:
-                              Theme.of(context).primaryColor.withOpacity(.02),
+                          color: Theme.of(context).primaryColor.withOpacity(.02),
                           image: const DecorationImage(
                             image: AssetImage('assets/images/img_10.jpg'),
                           ),
@@ -198,8 +186,10 @@ class HomeTopSection extends StatelessWidget {
                     const SizedBox(width: 4),
                     Text(
                       'Hi, Aman',
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontSize: 16, fontWeight: FontWeight.normal),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
                     ),
                   ],
                 ),
@@ -231,7 +221,16 @@ class HomeTopSection extends StatelessWidget {
                       iconData: FontAwesomeIcons.timeline,
                     ),
                     HomeAppBarIconWidget(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const Settings();
+                            },
+                          ),
+                        );
+                      },
                       iconData: FontAwesomeIcons.gear,
                     ),
                   ],
@@ -255,10 +254,7 @@ class RecentlyPlayedSection extends StatelessWidget {
       children: [
         Text(
           'Recently Played',
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, fontWeight: FontWeight.normal),
         ),
         const SizedBox(height: 10),
         Column(
@@ -379,18 +375,12 @@ class TrendingNowWidget extends StatelessWidget {
           Text(
             text ?? 'Lift me up',
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium!
-                .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 12, fontWeight: FontWeight.bold),
           ),
           Text(
             subText ?? 'Rihanna',
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context)
-                .textTheme
-                .displaySmall!
-                .copyWith(fontSize: 10, fontWeight: FontWeight.normal),
+            style: Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 10, fontWeight: FontWeight.normal),
           ),
         ],
       ),
@@ -419,17 +409,11 @@ class SongsOfTheWeek extends StatelessWidget {
           children: [
             Text(
               'Songs of the week',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(fontSize: 16, fontWeight: FontWeight.normal),
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16, fontWeight: FontWeight.normal),
             ),
             Text(
               'See all',
-              style: Theme.of(context)
-                  .textTheme
-                  .displaySmall!
-                  .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 12, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -493,17 +477,12 @@ class SongOfTheWeekWidget extends StatelessWidget {
               children: [
                 Text(
                   'Lift me up',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displaySmall!
-                      .copyWith(fontSize: 12, fontWeight: FontWeight.normal),
+                  style:
+                      Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 12, fontWeight: FontWeight.normal),
                 ),
                 Text(
                   'Rihanna',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(fontSize: 10, fontWeight: FontWeight.normal),
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 10, fontWeight: FontWeight.normal),
                 ),
               ],
             ),

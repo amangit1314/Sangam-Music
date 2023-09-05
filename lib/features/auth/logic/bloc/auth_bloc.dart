@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sangam_music/core/helper/shared_preference_helper.dart';
 
 import '../repository/auth_repository.dart';
 
@@ -43,12 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
     try {
       if (event.email.isNotEmpty && event.password.isNotEmpty) {
-        await authRepository
-            .register(
-                email: event.email,
-                password: event.password,
-                username: event.username)
-            .then(
+        await authRepository.register(email: event.email, password: event.password, username: event.username).then(
           (value) {
             emit(Registered());
             log('successfully registered 😎');
@@ -70,13 +66,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
     try {
       if (event.email.isNotEmpty && event.password.isNotEmpty) {
-        await authRepository
-            .login(email: event.email, password: event.password)
-            .then(
+        await authRepository.login(email: event.email, password: event.password).then(
           (value) {
             if (value.isNotEmpty) {
               emit(AuthSuccessful(value));
               log('successfully authenticated 😁, Uid: $value');
+              SharedPrefrenceHelper().setAccessToken(value);
             }
             // else if (value.isNotEmpty) {
             //   emit(AuthError(
@@ -97,8 +92,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future _forgotPassword(
-      AuthForgotPasswordEvent event, Emitter<AuthState> emit) async {
+  Future _forgotPassword(AuthForgotPasswordEvent event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
     try {
       // final result = await authRepository.forgotPassword(
@@ -110,8 +104,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future _verifyEmail(
-      AuthVerifyEmailEvent event, Emitter<AuthState> emit) async {
+  Future _verifyEmail(AuthVerifyEmailEvent event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
     try {
       // final result = await authRepository.verifyEmail();
